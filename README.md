@@ -1,7 +1,8 @@
 # Shelfy for (Book-Management)
 
-Foobar is a Python library for dealing with word pluralization.
 
+## Requirements to install angular 19
+https://angular.dev/installation
 ## To run the app
 for this app i used angular 19
 
