@@ -1,0 +1,131 @@
+<section class="book-form-sec py-5">
+    <div class="container mx-auto">
+        
+
+
+
+<form [formGroup]="bookForm" (ngSubmit)="submitForm()" class="max-w-sm mx-auto">
+  <div class="mb-5">
+    <label for="title" class="block mb-2 text-sm font-medium text-gray-900">Title</label>
+    <input formControlName="title" type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Book Title..." required />
+  </div>
+     @if(bookForm.get('title')?.errors && bookForm.get('title')?.touched){
+                      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Danger</span>
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                              @if(bookForm.get('title')?.getError('required')){
+                                <li> title is required</li>
+                              }@else if (bookForm.get('title')?.getError('maxlength')) {
+                                <li> title maxLength is : 100</li>
+
+                              }
+                          </ul>
+                        </div>
+                      </div>
+                    }
+
+
+  <div class="mb-5">
+    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Author Name</label>
+    <input formControlName="authorName" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Author Name..." required />
+  </div>
+    @if(bookForm.get('authorName')?.errors && bookForm.get('authorName')?.touched){
+                      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Danger</span>
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                              @if(bookForm.get('authorName')?.getError('required')){
+                                <li> author name is required</li>
+                              }@else if (bookForm.get('authorName')?.getError('maxlength')) {
+                                <li> author name maxLength is : 50</li>
+
+                              }
+                          </ul>
+                        </div>
+                      </div>
+                    }
+
+
+  
+<div class="mb-5">
+  <label for="genre" class="block mb-2 text-sm font-medium text-gray-900">Genre</label>
+  <select 
+    id="genre"
+    name="genre"
+    formControlName="genre"
+    required
+    class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-3 focus:ring-blue-300 focus:border-blue-500 block w-full p-2.5"
+  >
+    <option value="" disabled selected hidden>Choose</option>
+    <option value="fiction">Fiction</option>
+    <option value="non-fiction">Non-Fiction</option>
+    <option value="science">Science</option>
+    <option value="history">History</option>
+    <option value="biography">Biography</option>
+  </select>
+</div>
+   @if(bookForm.get('genre')?.errors && bookForm.get('genre')?.touched){
+                      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Danger</span>
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                              @if(bookForm.get('genre')?.getError('required')){
+                                <li> genre is required</li>
+                              }
+                          </ul>
+                        </div>
+                      </div>
+                    }
+
+<div class="mb-5">
+  <label for="publish_date" class="block mb-2 text-sm font-medium text-gray-900">Publish Date</label>
+  <input 
+    type="date" 
+    id="publish_date" 
+    name="publish_date" 
+    formControlName="publishDate"
+    required
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-3 focus:ring-blue-300 focus:border-blue-500 block w-full p-2.5"
+  />
+</div>
+
+   @if(bookForm.get('publishDate')?.errors && bookForm.get('publishDate')?.touched){
+                      <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                        <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                        </svg>
+                        <span class="sr-only">Danger</span>
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                              @if(bookForm.get('publishDate')?.getError('required')){
+                                <li> date is required</li>
+                              }
+                          </ul>
+                        </div>
+                      </div>
+                    }
+
+  
+  <button [disabled]="bookForm.invalid" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 disabled:bg-gray-300 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+    @if (isLoading) {
+                        <span><i class="fas fa-spin fa-spinner"></i></span>
+                      }
+                      
+    Submit</button>
+</form>
+
+
+    </div>
+
+</section>
+
